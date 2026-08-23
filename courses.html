@@ -1,1 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses & Fees - Arka-Medha Education</title>
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: #f4f7f6; color: #333; line-height: 1.6; display: flex; flex-direction: column; min-height: 100vh; }
+        
+        /* Navbar */
+        .navbar { background: #0f2027; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.2); position: sticky; top: 0; z-index: 100; }
+        .navbar .logo-container { display: flex; align-items: center; gap: 12px; }
+        .navbar .logo-img { height: 45px; width: auto; }
+        .navbar .logo-text { color: #ffffff; font-size: 28px; font-weight: 900; letter-spacing: 1.5px; text-transform: uppercase; text-shadow: 2px 2px 4px rgba(0,0,0,0.4); }
+        .navbar ul { display: flex; list-style: none; }
+        .navbar ul li { margin-left: 25px; }
+        .navbar ul li a { color: #dfdfdf; text-decoration: none; font-size: 16px; font-weight: 500; }
+        .navbar ul li a:hover { color: #f8b500; }
 
+        /* Header */
+        .page-header { background: #0f2027; color: white; text-align: center; padding: 40px 20px; border-top: 1px solid rgba(255,255,255,0.1); }
+        .page-header h1 { color: #f8b500; font-size: 36px; margin-bottom: 10px; }
+        .page-header p { font-size: 16px; color: #dfdfdf; max-width: 600px; margin: auto; }
+
+        /* Courses Section */
+        .courses-section { padding: 50px 20px; max-width: 1000px; margin: auto; flex: 1; width: 100%; }
+        
+        .course-card { background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.08); margin-bottom: 30px; border-left: 6px solid #f8b500; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; transition: 0.3s; }
+        .course-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.12); border-left: 6px solid #0f2027; }
+        
+        .course-info { flex: 1; min-width: 300px; margin-right: 20px; }
+        .course-title { color: #0f2027; font-size: 24px; margin-bottom: 10px; }
+        .course-desc { color: #555; font-size: 15px; margin-bottom: 15px; }
+        
+        .course-features { list-style: none; margin-bottom: 20px; }
+        .course-features li { font-size: 14px; color: #444; margin-bottom: 5px; }
+        .course-features li::before { content: '✔️'; margin-right: 8px; color: #25d366; }
+        
+        .course-fee { text-align: right; background: #f8f9fa; padding: 20px; border-radius: 8px; border: 1px solid #eee; min-width: 250px; }
+        .fee-amount { font-size: 28px; font-weight: bold; color: #0f2027; margin-bottom: 5px; }
+        .fee-note { font-size: 12px; color: #777; margin-bottom: 15px; display: block; }
+        .enroll-btn { display: block; text-align: center; background: #0f2027; color: #fff; padding: 10px 0; text-decoration: none; border-radius: 5px; font-weight: bold; transition: 0.3s; }
+        .enroll-btn:hover { background: #f8b500; color: #0f2027; }
+
+        footer { background: #0b171c; color: #dfdfdf; text-align: center; padding: 20px; margin-top: auto; }
+        
+        @media (max-width: 768px) {
+            .course-card { flex-direction: column; text-align: left; }
+            .course-info { margin-right: 0; margin-bottom: 20px; }
+            .course-fee { text-align: left; width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating Chat Link -->
+    <a href="https://wa.me/919165550105" target="_blank" style="position: fixed; bottom: 20px; right: 20px; background-color: #25d366; color: white; padding: 15px 22px; border-radius: 50px; text-decoration: none; font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 1000; font-size: 16px;">💬 Chat on WhatsApp</a>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="index.html" class="logo-container" style="text-decoration: none;">
+            <img src="logo.png" alt="Arka-Medha Logo" class="logo-img" onerror="this.style.display='none';">
+            <div class="logo-text">Arka-<span style="color: #f8b500;">Medha</span></div>
+        </a>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="courses.html">Courses & Fees</a></li>
+            <li><a href="photos.html">Photos</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Header -->
+    <div class="page-header">
+        <h1>Our Courses & Fee Structure</h1>
+        <p>Expert guidance in Mathematics and Physics for Board Exams and Competitive preparations.</p>
+    </div>
+
+    <!-- Courses Content -->
+    <section class="courses-section">
+
+        <!-- Course 1 -->
+        <div class="course-card">
+            <div class="course-info">
+                <h2 class="course-title">Class 12th Board Batch</h2>
+                <p class="course-desc">Comprehensive preparation for MP Board / CBSE with complete NCERT coverage.</p>
+                <ul class="course-features">
+                    <li>Full syllabus coverage for Math & Physics</li>
+                    <li>Weekly tests and progress reports</li>
+                    <li>Doubt clearing sessions</li>
+                    <li>Printed notes and formula sheets</li>
+                </ul>
+            </div>
+            <div class="course-fee">
+                <div class="fee-amount">₹500 / month</div>
+                <span class="fee-note">*Per Subject</span>
+                <a href="https://wa.me/919165550105?text=Hello%20Pankaj%20Sir,%20I%20want%20to%20enroll%20in%20Class%2012th%20Batch." class="enroll-btn" target="_blank">Enroll Now</a>
+            </div>
+        </div>
+
+        <!-- Course 2 -->
+        <div class="course-card">
+            <div class="course-info">
+                <h2 class="course-title">Class 11th Foundation</h2>
+                <p class="course-desc">Building strong basics for higher secondary education and future competitive exams.</p>
+                <ul class="course-features">
+                    <li>Concept building from basic to advanced</li>
+                    <li>Interactive classes</li>
+                    <li>Regular assignments</li>
+                </ul>
+            </div>
+            <div class="course-fee">
+                <div class="fee-amount">₹400 / month</div>
+                <span class="fee-note">*Per Subject</span>
+                <a href="https://wa.me/919165550105?text=Hello%20Pankaj%20Sir,%20I%20want%20to%20enroll%20in%20Class%2011th%20Batch." class="enroll-btn" target="_blank">Enroll Now</a>
+            </div>
+        </div>
+
+        <!-- Course 3 -->
+        <div class="course-card">
+            <div class="course-info">
+                <h2 class="course-title">JEE Main / Target Batch</h2>
+                <p class="course-desc">Specialized training for JEE Main with shortcut tricks and time management.</p>
+                <ul class="course-features">
+                    <li>Previous year question practice</li>
+                    <li>Mock tests and analysis</li>
+                    <li>Advanced problem solving</li>
+                </ul>
+            </div>
+            <div class="course-fee">
+                <div class="fee-amount">₹800 / month</div>
+                <span class="fee-note">*Combo package available</span>
+                <a href="https://wa.me/919165550105?text=Hello%20Pankaj%20Sir,%20I%20want%20to%20enroll%20in%20JEE%20Target%20Batch." class="enroll-btn" target="_blank">Enroll Now</a>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: #0b171c; color: #dfdfdf; text-align: center; padding: 20px; margin-top: auto;">
+        <p>&copy; 2026 Arka-Medha Education. All Rights Reserved.</p>
+        <p style="margin-top: 5px; font-size: 14px; color: #888;">Designed by <span style="color: #f8b500; font-weight: bold;">Pankaj Sir</span></p>
+    </footer>
+
+</body>
+</html>
