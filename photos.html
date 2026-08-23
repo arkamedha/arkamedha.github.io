@@ -28,38 +28,27 @@
         .folder-btn { background: #fff; border: 2px solid #0f2027; color: #0f2027; padding: 10px 25px; margin: 5px; font-size: 16px; font-weight: bold; border-radius: 30px; cursor: pointer; transition: 0.3s; }
         .folder-btn:hover, .folder-btn.active { background: #0f2027; color: #f8b500; }
 
-        /* Gallery Section */
-        <section class="gallery-section">
-        <div class="gallery-grid">
-            
-            <!-- Trip Photo 1 -->
-            <div class="gallery-item events">
-                <img src="Trippachmani1.jpeg" alt="Pachmarhi Trip" class="gallery-img">
-                <div class="gallery-caption">Pachmarhi Trip - Fun Times</div>
-            </div>
+        /* Gallery Section (Choti Photos ke liye) */
+        .gallery-section { padding: 0 20px 60px 20px; max-width: 1200px; margin: auto; flex: 1; }
+        /* Box ka size 300px se 200px kar diya hai taaki photos choti dikhein */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+        
+        .gallery-item { background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: 0.4s ease-in-out; }
+        .gallery-item.hide { display: none; }
+        
+        /* Photo click karne layek banane ke liye cursor: pointer lagaya hai */
+        .gallery-img { width: 100%; height: 200px; object-fit: cover; display: block; border-bottom: 4px solid #f8b500; cursor: pointer; transition: 0.3s; }
+        .gallery-img:hover { opacity: 0.8; transform: scale(1.03); }
+        .gallery-caption { padding: 15px; text-align: center; font-weight: bold; color: #0f2027; font-size: 14px; }
 
-            <!-- Trip Photo 2 -->
-            <div class="gallery-item events">
-                <img src="Trippachmani2.jpeg" alt="Pachmarhi Trip" class="gallery-img">
-                <div class="gallery-caption">Enjoying the Nature</div>
-            </div>
-
-            <!-- Trip Photo 3 -->
-            <div class="gallery-item events">
-                <img src="Trippachmani3.jpeg" alt="Pachmarhi Trip" class="gallery-img">
-                <div class="gallery-caption">Memorable Moments</div>
-            </div>
-
-            <!-- Trip Photo 4 -->
-            <div class="gallery-item events">
-                <img src="Trippachmani4.jpeg" alt="Pachmarhi Trip" class="gallery-img">
-                <div class="gallery-caption">Our Amazing Journey</div>
-            </div>
-
-        </div>
-    </section>
         /* Floating WhatsApp Button */
         .whatsapp-btn { position: fixed; bottom: 20px; right: 20px; background-color: #25d366; color: white; padding: 15px 22px; border-radius: 50px; text-decoration: none; font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 1000; display: flex; align-items: center; gap: 8px; font-size: 16px; }
+
+        /* ---- NAYA CSS: Full Size Image Pop-up ke liye ---- */
+        .modal { display: none; position: fixed; z-index: 2000; padding-top: 50px; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.9); }
+        .modal-content { margin: auto; display: block; max-width: 90%; max-height: 80vh; border-radius: 8px; border: 3px solid #f8b500; }
+        .close-btn { position: absolute; top: 20px; right: 35px; color: #f1f1f1; font-size: 40px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .close-btn:hover, .close-btn:focus { color: #f8b500; }
 
         footer { background: #0b171c; color: #dfdfdf; text-align: center; padding: 20px; margin-top: auto; }
     </style>
@@ -100,47 +89,52 @@
     <section class="gallery-section">
         <div class="gallery-grid">
             
-            <!-- Category: Classroom -->
-            <div class="gallery-item classroom">
-                <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80" alt="Classroom" class="gallery-img">
-                <div class="gallery-caption">Smart Interactive Class</div>
-            </div>
-
-            <!-- Category: Classroom -->
-            <div class="gallery-item classroom">
-                <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&q=80" alt="Smart Board" class="gallery-img">
-                <div class="gallery-caption">Digital Board Sessions</div>
-            </div>
-
-            <!-- Category: Toppers -->
-            <div class="gallery-item toppers">
-                <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80" alt="Toppers" class="gallery-img">
-                <div class="gallery-caption">JEE Mains Achievers</div>
-            </div>
-
-            <!-- Category: Events -->
+            <!-- Trip Photo 1 -->
             <div class="gallery-item events">
-                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80" alt="Events" class="gallery-img">
-                <div class="gallery-caption">Annual Motivation Seminar</div>
+                <img src="Trippachmani1.jpg" alt="Pachmarhi Trip" class="gallery-img" onclick="openModal(this.src)">
+                <div class="gallery-caption">Pachmarhi Trip - Fun Times</div>
+            </div>
+
+            <!-- Trip Photo 2 -->
+            <div class="gallery-item events">
+                <img src="Trippachmani2.jpg" alt="Pachmarhi Trip" class="gallery-img" onclick="openModal(this.src)">
+                <div class="gallery-caption">Enjoying the Nature</div>
+            </div>
+
+            <!-- Trip Photo 3 -->
+            <div class="gallery-item events">
+                <img src="Trippachmani3.jpg" alt="Pachmarhi Trip" class="gallery-img" onclick="openModal(this.src)">
+                <div class="gallery-caption">Memorable Moments</div>
+            </div>
+
+            <!-- Trip Photo 4 -->
+            <div class="gallery-item events">
+                <img src="Trippachmani4.jpg" alt="Pachmarhi Trip" class="gallery-img" onclick="openModal(this.src)">
+                <div class="gallery-caption">Our Amazing Journey</div>
             </div>
 
         </div>
     </section>
+
+    <!-- The Modal (Full Image View) -->
+    <div id="imageModal" class="modal">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="fullImage">
+    </div>
 
     <!-- Footer -->
     <footer>
         <p>&copy; 2026 Arka-Medha Education. All Rights Reserved.</p>
     </footer>
 
-    <!-- JavaScript for Folder Filtering -->
+    <!-- JavaScript -->
     <script>
+        // Folder Filter Logic
         function filterGallery(category) {
-            // Update Active Button Style
             const buttons = document.querySelectorAll('.folder-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
             event.currentTarget.classList.add('active');
 
-            // Hide/Show Images
             const items = document.querySelectorAll('.gallery-item');
             items.forEach(item => {
                 if (category === 'all') {
@@ -153,6 +147,24 @@
                     }
                 }
             });
+        }
+
+        // Full Image Pop-up Logic
+        function openModal(imgSrc) {
+            document.getElementById("imageModal").style.display = "block";
+            document.getElementById("fullImage").src = imgSrc;
+        }
+
+        function closeModal() {
+            document.getElementById("imageModal").style.display = "none";
+        }
+
+        // Agar koi photo ke bahar (black area) click kare tab bhi photo band ho jayegi
+        window.onclick = function(event) {
+            let modal = document.getElementById("imageModal");
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
         }
     </script>
 </body>
