@@ -9,7 +9,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; scroll-behavior: smooth; }
         body { background-color: #f4f7f6; color: #333; line-height: 1.6; display: flex; flex-direction: column; min-height: 100vh; }
         
-        /* Navbar (Updated Design) */
+        /* Navbar */
         .navbar { background: #0f2027; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.2); position: sticky; top: 0; z-index: 100; }
         .navbar .logo-container { display: flex; align-items: center; gap: 12px; }
         .navbar .logo-img { height: 45px; width: auto; }
@@ -23,21 +23,24 @@
         .page-header { background: #0f2027; color: white; text-align: center; padding: 40px 20px; border-top: 1px solid rgba(255,255,255,0.1); }
         .page-header h1 { color: #f8b500; font-size: 36px; margin-bottom: 10px; }
 
+        /* Folder / Filter Buttons */
+        .folder-menu { text-align: center; margin: 40px 0 20px 0; }
+        .folder-btn { background: #fff; border: 2px solid #0f2027; color: #0f2027; padding: 10px 25px; margin: 5px; font-size: 16px; font-weight: bold; border-radius: 30px; cursor: pointer; transition: 0.3s; }
+        .folder-btn:hover, .folder-btn.active { background: #0f2027; color: #f8b500; }
+
         /* Gallery Section */
-        .gallery-section { padding: 60px 20px; max-width: 1200px; margin: auto; flex: 1; }
+        .gallery-section { padding: 0 20px 60px 20px; max-width: 1200px; margin: auto; flex: 1; }
         .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
         
-        .gallery-item { background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: transform 0.3s; }
-        .gallery-item:hover { transform: translateY(-5px); }
+        .gallery-item { background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: 0.4s ease-in-out; }
+        .gallery-item.hide { display: none; } /* Hide class for filtering */
         
         .gallery-img { width: 100%; height: 250px; object-fit: cover; display: block; border-bottom: 4px solid #f8b500; }
         .gallery-caption { padding: 15px; text-align: center; font-weight: bold; color: #0f2027; font-size: 16px; }
 
         /* Floating WhatsApp Button */
         .whatsapp-btn { position: fixed; bottom: 20px; right: 20px; background-color: #25d366; color: white; padding: 15px 22px; border-radius: 50px; text-decoration: none; font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 1000; display: flex; align-items: center; gap: 8px; font-size: 16px; }
-        .whatsapp-btn:hover { background-color: #1ebe57; }
 
-        /* Footer */
         footer { background: #0b171c; color: #dfdfdf; text-align: center; padding: 20px; margin-top: auto; }
     </style>
 </head>
@@ -62,47 +65,43 @@
     <!-- Page Header -->
     <div class="page-header">
         <h1>Photo Gallery</h1>
-        <p>A glimpse into our classrooms, smart interactive panels, and study environment.</p>
+        <p>Explore our campus, achievements, and interactive learning environment.</p>
+    </div>
+
+    <!-- FOLDER / FILTER MENU -->
+    <div class="folder-menu">
+        <button class="folder-btn active" onclick="filterGallery('all')">📂 All Photos</button>
+        <button class="folder-btn" onclick="filterGallery('classroom')">🏫 Classrooms</button>
+        <button class="folder-btn" onclick="filterGallery('toppers')">🏆 Toppers</button>
+        <button class="folder-btn" onclick="filterGallery('events')">🎉 Events</button>
     </div>
 
     <!-- Gallery Section -->
     <section class="gallery-section">
         <div class="gallery-grid">
             
-            <!-- Photo 1 -->
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80" alt="Classroom Session" class="gallery-img">
-                <div class="gallery-caption">Interactive Classroom Sessions</div>
+            <!-- Category: Classroom -->
+            <div class="gallery-item classroom">
+                <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80" alt="Classroom" class="gallery-img">
+                <div class="gallery-caption">Smart Interactive Class</div>
             </div>
 
-            <!-- Photo 2 -->
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&q=80" alt="Doubt Clearing" class="gallery-img">
-                <div class="gallery-caption">Physics & Maths Doubt Clearing</div>
+            <!-- Category: Classroom -->
+            <div class="gallery-item classroom">
+                <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&q=80" alt="Smart Board" class="gallery-img">
+                <div class="gallery-caption">Digital Board Sessions</div>
             </div>
 
-            <!-- Photo 3 -->
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80" alt="Study Materials" class="gallery-img">
-                <div class="gallery-caption">Comprehensive Study Materials</div>
+            <!-- Category: Toppers -->
+            <div class="gallery-item toppers">
+                <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80" alt="Toppers" class="gallery-img">
+                <div class="gallery-caption">JEE Mains Achievers</div>
             </div>
 
-            <!-- Photo 4 -->
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&q=80" alt="Smart Panels" class="gallery-img">
-                <div class="gallery-caption">Smart Board Preparations</div>
-            </div>
-            
-            <!-- Photo 5 -->
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80" alt="Student Discussions" class="gallery-img">
-                <div class="gallery-caption">Group Discussions</div>
-            </div>
-
-            <!-- Photo 6 -->
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&q=80" alt="JEE NEET Preparation" class="gallery-img">
-                <div class="gallery-caption">JEE & NEET Focus Batches</div>
+            <!-- Category: Events -->
+            <div class="gallery-item events">
+                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80" alt="Events" class="gallery-img">
+                <div class="gallery-caption">Annual Motivation Seminar</div>
             </div>
 
         </div>
@@ -113,5 +112,28 @@
         <p>&copy; 2026 Arka-Medha Education. All Rights Reserved.</p>
     </footer>
 
+    <!-- JavaScript for Folder Filtering -->
+    <script>
+        function filterGallery(category) {
+            // Update Active Button Style
+            const buttons = document.querySelectorAll('.folder-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+
+            // Hide/Show Images
+            const items = document.querySelectorAll('.gallery-item');
+            items.forEach(item => {
+                if (category === 'all') {
+                    item.classList.remove('hide');
+                } else {
+                    if (item.classList.contains(category)) {
+                        item.classList.remove('hide');
+                    } else {
+                        item.classList.add('hide');
+                    }
+                }
+            });
+        }
+    </script>
 </body>
 </html>
