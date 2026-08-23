@@ -19,7 +19,7 @@
         /* Main Container */
         .payment-container { max-width: 1000px; margin: 40px auto; padding: 0 20px; display: flex; gap: 30px; flex-wrap: wrap; align-items: flex-start; }
         
-        /* Left Column: Payment Details */
+        /* Left Column: Payment Details (QR & UPI) */
         .payment-methods { flex: 1; min-width: 300px; background: white; padding: 40px 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-top: 5px solid #0f2027; text-align: center; }
         .payment-methods h2 { color: #0f2027; margin-bottom: 25px; }
         
@@ -72,7 +72,8 @@
             
             <div style="margin-top: 20px;">
                 <p style="color: #666; font-size: 15px;">Or pay directly using UPI ID:</p>
-                <div class="upi-id">arkamedha@upi</div> <!-- YAHAN APNI UPI ID DALEN -->
+                <!-- YAHAN APNI ASLI UPI ID DALEN -->
+                <div class="upi-id">arkamedha@upi</div> 
             </div>
         </div>
 
@@ -81,39 +82,40 @@
             <h2>Payment Verification</h2>
             <p class="sub-text">Please fill this form after making the payment to update your fee record.</p>
             
-            <form action="success.html" method="GET">
+            <!-- WhatsApp Integration Form -->
+            <form id="paymentForm" onsubmit="sendToWhatsApp(event)">
                 <div class="input-group">
                     <label>Student's Full Name *</label>
-                    <input type="text" placeholder="Enter student's name" required>
+                    <input type="text" id="studentName" placeholder="Enter student's name" required>
                 </div>
                 
                 <div class="input-group">
                     <label>Mobile Number (WhatsApp) *</label>
-                    <input type="tel" placeholder="+91" required>
+                    <input type="tel" id="studentPhone" placeholder="+91" required>
                 </div>
 
                 <div class="input-group">
                     <label>Select Course / Batch *</label>
-                    <select required>
+                    <select id="course" required>
                         <option value="">-- Select Course --</option>
-                        <option value="9th">9th Foundation</option>
-                        <option value="10th">10th Board & Foundation</option>
-                        <option value="11th">11th CBSE/State (PCM)</option>
-                        <option value="12th">12th Board (PCM)</option>
-                        <option value="jee">JEE Main & Advanced</option>
-                        <option value="neet">NEET Preparation</option>
-                        <option value="nda">NDA Entrance</option>
+                        <option value="9th Foundation">9th Foundation</option>
+                        <option value="10th Board & Foundation">10th Board & Foundation</option>
+                        <option value="11th CBSE/State (PCM)">11th CBSE/State (PCM)</option>
+                        <option value="12th Board (PCM)">12th Board (PCM)</option>
+                        <option value="JEE Main & Advanced">JEE Main & Advanced</option>
+                        <option value="NEET Preparation">NEET Preparation</option>
+                        <option value="NDA Entrance">NDA Entrance</option>
                     </select>
                 </div>
 
                 <div class="input-group">
                     <label>Amount Paid (₹) *</label>
-                    <input type="number" placeholder="Enter amount" required>
+                    <input type="number" id="amount" placeholder="Enter amount" required>
                 </div>
 
                 <div class="input-group">
                     <label>Transaction ID / UTR Number *</label>
-                    <input type="text" placeholder="e.g. 123456789012" required>
+                    <input type="text" id="utr" placeholder="e.g. 123456789012" required>
                 </div>
 
                 <button type="submit" class="submit-btn">Submit Payment Details</button>
@@ -132,5 +134,41 @@
         <p style="margin-top: 5px; font-size: 14px; color: #888;">Helpline: +91 9165550105</p>
     </footer>
 
+    <!-- WhatsApp Script -->
+    <script>
+        function sendToWhatsApp(event) {
+            // Page ko reload hone se rokna
+            event.preventDefault(); 
+
+            // Form se saari details nikalna
+            const name = document.getElementById('studentName').value;
+            const phone = document.getElementById('studentPhone').value;
+            const course = document.getElementById('course').value;
+            const amount = document.getElementById('amount').value;
+            const utr = document.getElementById('utr').value;
+
+            // WhatsApp message format banana
+            let message = `*Arka-Medha Education - New Fee Payment!* 💰\n\n`;
+            message += `*Student Name:* ${name}\n`;
+            message += `*Mobile No:* ${phone}\n`;
+            message += `*Batch/Course:* ${course}\n`;
+            message += `*Amount Paid:* ₹${amount}\n`;
+            message += `*UTR/Txn ID:* ${utr}\n\n`;
+            message += `Sir, I have submitted the payment. Please verify.`;
+
+            // Aapka WhatsApp Number (9165550105)
+            const whatsappNumber = "919165550105"; 
+            
+            // Link create karna
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+
+            // WhatsApp open karna
+            window.open(whatsappURL, '_blank');
+
+            // Form ko clear kar dena
+            document.getElementById('paymentForm').reset();
+        }
+    </script>
 </body>
 </html>
