@@ -1,1 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Material - Arka-Medha Education</title>
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: #f4f7f6; color: #333; line-height: 1.6; display: flex; flex-direction: column; min-height: 100vh; }
+        
+        /* Navbar */
+        .navbar { background: #0f2027; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.2); position: sticky; top: 0; z-index: 100; }
+        .navbar .logo-container { display: flex; align-items: center; gap: 12px; }
+        .navbar .logo-img { height: 45px; width: auto; }
+        .navbar .logo-text { color: #ffffff; font-size: 28px; font-weight: 900; letter-spacing: 1.5px; text-transform: uppercase; text-shadow: 2px 2px 4px rgba(0,0,0,0.4); }
+        .navbar ul { display: flex; list-style: none; }
+        .navbar ul li { margin-left: 25px; }
+        .navbar ul li a { color: #dfdfdf; text-decoration: none; font-size: 16px; font-weight: 500; }
+        .navbar ul li a:hover { color: #f8b500; }
 
+        /* Header */
+        .page-header { background: #0f2027; color: white; text-align: center; padding: 40px 20px; border-top: 1px solid rgba(255,255,255,0.1); }
+        .page-header h1 { color: #f8b500; font-size: 36px; margin-bottom: 10px; }
+
+        /* Material Section */
+        .material-section { padding: 50px 20px; max-width: 1000px; margin: auto; flex: 1; width: 100%; }
+        .subject-title { font-size: 28px; color: #0f2027; border-bottom: 3px solid #f8b500; padding-bottom: 10px; margin-bottom: 30px; margin-top: 40px; }
+        
+        .material-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        
+        .card { background: #fff; padding: 25px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border-left: 5px solid #0f2027; transition: 0.3s; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 6px 15px rgba(0,0,0,0.1); border-left-color: #f8b500; }
+        
+        .card h3 { color: #0f2027; font-size: 20px; margin-bottom: 10px; }
+        .card p { color: #666; font-size: 14px; margin-bottom: 20px; }
+        
+        /* Download Button */
+        .download-btn { display: inline-block; background: #0f2027; color: #fff; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold; font-size: 14px; transition: 0.3s; }
+        .download-btn:hover { background: #f8b500; color: #0f2027; }
+
+        footer { background: #0b171c; color: #dfdfdf; text-align: center; padding: 20px; margin-top: auto; }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="index.html" class="logo-container" style="text-decoration: none;">
+            <img src="logo.png" alt="Arka-Medha Logo" class="logo-img" onerror="this.style.display='none';">
+            <div class="logo-text">Arka-<span style="color: #f8b500;">Medha</span></div>
+        </a>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="photos.html">Photos</a></li>
+            <li><a href="study-material.html">Study Material</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Header -->
+    <div class="page-header">
+        <h1>Study Material & Downloads</h1>
+        <p>Free PDF notes, formula sheets, and previous year papers for our students.</p>
+    </div>
+
+    <!-- Main Content -->
+    <section class="material-section">
+
+        <!-- Mathematics Section -->
+        <h2 class="subject-title">Mathematics (MP Board & JEE)</h2>
+        <div class="material-grid">
+            <div class="card">
+                <h3>Class 12th Math Formulas</h3>
+                <p>Complete formula sheet covering Calculus, Algebra, and Vectors.</p>
+                <a href="math-formulas.pdf" class="download-btn" download>📥 Download PDF</a>
+            </div>
+            <div class="card">
+                <h3>JEE Main Practice Set</h3>
+                <p>Important objective questions with solutions for upcoming exams.</p>
+                <a href="jee-math-practice.pdf" class="download-btn" download>📥 Download PDF</a>
+            </div>
+        </div>
+
+        <!-- Physics Section -->
+        <h2 class="subject-title">Physics (MP Board & JEE)</h2>
+        <div class="material-grid">
+            <div class="card">
+                <h3>Physics Short Notes</h3>
+                <p>Quick revision notes for Mechanics and Electromagnetism.</p>
+                <a href="physics-notes.pdf" class="download-btn" download>📥 Download PDF</a>
+            </div>
+            <div class="card">
+                <h3>MP Board Previous Papers</h3>
+                <p>Last 5 years solved papers for Class 12th Physics.</p>
+                <a href="physics-papers.pdf" class="download-btn" download>📥 Download PDF</a>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Arka-Medha Education. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
