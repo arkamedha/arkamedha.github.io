@@ -137,7 +137,7 @@
     <!-- WhatsApp Script -->
     <script>
         function sendToWhatsApp(event) {
-            // Page ko reload hone se rokna
+            // Page ko turant reload hone se rokna
             event.preventDefault(); 
 
             // Form se saari details nikalna
@@ -156,18 +156,21 @@
             message += `*UTR/Txn ID:* ${utr}\n\n`;
             message += `Sir, I have submitted the payment. Please verify.`;
 
-            // Aapka WhatsApp Number (9165550105)
+            // Aapka WhatsApp Number
             const whatsappNumber = "919165550105"; 
             
             // Link create karna
             const encodedMessage = encodeURIComponent(message);
             const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
 
-            // WhatsApp open karna
+            // Naye tab mein WhatsApp open karna
             window.open(whatsappURL, '_blank');
 
             // Form ko clear kar dena
             document.getElementById('paymentForm').reset();
+            
+            // Website ko success page par bhej dena
+            window.location.href = "success.html";
         }
     </script>
 </body>
