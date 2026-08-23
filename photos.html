@@ -51,6 +51,33 @@
         .close-btn:hover, .close-btn:focus { color: #f8b500; }
 
         footer { background: #0b171c; color: #dfdfdf; text-align: center; padding: 20px; margin-top: auto; }
+        @media screen and (max-width: 768px) {
+            /* 1. Menu (Navbar) Theek Karna */
+            .navbar { flex-direction: column; text-align: center; padding: 15px 10px; gap: 10px; }
+            .navbar .logo-container { justify-content: center; width: 100%; }
+            .navbar ul { flex-wrap: wrap; justify-content: center; gap: 10px; padding: 0; }
+            .navbar ul li { margin: 5px; }
+
+            /* 2. Text aur Headings ka Size chota karna */
+            .page-header { padding: 30px 15px; }
+            .page-header h1 { font-size: 26px; }
+            
+            /* 3. Photos aur Contact Form ko 1 Line mein karna */
+            .gallery-grid, .material-grid { grid-template-columns: 1fr !important; gap: 15px; }
+            .folder-btn { font-size: 14px; padding: 8px 15px; }
+
+            /* 4. Courses Page ke Boxes theek karna */
+            .course-card { flex-direction: column !important; padding: 20px !important; }
+            .course-info { margin-right: 0 !important; margin-bottom: 20px !important; width: 100%; }
+            .course-fee { min-width: 100% !important; text-align: left !important; }
+
+            /* 5. Main Page (Index) ke Study Material ko theek karna */
+            #study-material > div { flex-direction: column !important; align-items: center; }
+            #study-material div > div { width: 100% !important; max-width: 100%; margin-bottom: 20px; }
+
+            /* 6. Sabhi images ko screen ke andar rakhna */
+            img { max-width: 100%; height: auto; }
+        }
     </style>
 </head>
 <body>
