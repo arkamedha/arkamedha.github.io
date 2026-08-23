@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fee Payment | Arka-Medha Education</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #f4f7f6; color: #333; line-height: 1.6; }
+        
+        /* Navbar */
+        .navbar { background: #0f2027; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+        .logo-container { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .logo-text { color: #ffffff; font-size: 24px; font-weight: 900; letter-spacing: 1px; text-transform: uppercase; }
+        .logo-text span { color: #f8b500; }
+        .back-btn { color: #dfdfdf; text-decoration: none; font-weight: bold; border: 1px solid #dfdfdf; padding: 5px 15px; border-radius: 5px; transition: 0.3s; }
+        .back-btn:hover { background: #f8b500; color: #0f2027; border-color: #f8b500; }
+
+        /* Main Container */
+        .payment-container { max-width: 1000px; margin: 40px auto; padding: 0 20px; display: flex; gap: 30px; flex-wrap: wrap; align-items: flex-start; }
+        
+        /* Left Column: Payment Details */
+        .payment-methods { flex: 1; min-width: 300px; background: white; padding: 40px 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-top: 5px solid #0f2027; text-align: center; }
+        .payment-methods h2 { color: #0f2027; margin-bottom: 25px; }
+        
+        .qr-box { background: #f8f9fa; padding: 25px; border-radius: 10px; margin-bottom: 25px; border: 1px dashed #ccc; }
+        .qr-image { width: 220px; height: 220px; object-fit: contain; margin-bottom: 15px; }
+        .upi-id { font-size: 20px; font-weight: bold; color: #d35400; background: #fff3e0; padding: 12px 20px; border-radius: 5px; display: inline-block; margin-top: 10px; border: 1px dashed #d35400; }
+        
+        /* Right Column: Verification Form */
+        .payment-form { flex: 1; min-width: 300px; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-top: 5px solid #f8b500; }
+        .payment-form h2 { color: #0f2027; margin-bottom: 5px; }
+        .payment-form p.sub-text { font-size: 14px; color: #666; margin-bottom: 20px; }
+        
+        .input-group { margin-bottom: 15px; }
+        .input-group label { display: block; margin-bottom: 5px; font-weight: bold; font-size: 14px; color: #333; }
+        .input-group input, .input-group select { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 14px; }
+        .input-group input:focus, .input-group select:focus { border-color: #f8b500; outline: none; }
+        
+        .submit-btn { background: #0f2027; color: #f8b500; width: 100%; padding: 12px; border: none; border-radius: 5px; font-size: 16px; font-weight: bold; cursor: pointer; transition: 0.3s; margin-top: 10px; }
+        .submit-btn:hover { background: #f8b500; color: #0f2027; }
+
+        /* Secure Badge */
+        .secure-badge { text-align: center; margin-top: 15px; font-size: 12px; color: #27ae60; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 5px; }
+
+        /* Footer */
+        footer { background: #0b171c; color: #dfdfdf; text-align: center; padding: 20px; margin-top: 40px; }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="index.html" class="logo-container">
+            <div class="logo-text">Arka-<span>Medha</span></div>
+        </a>
+        <a href="index.html" class="back-btn">← Back to Home</a>
+    </nav>
+
+    <!-- Main Payment Section -->
+    <div class="payment-container">
+        
+        <!-- Left: QR Code & UPI -->
+        <div class="payment-methods">
+            <h2>Scan & Pay Fees</h2>
+            
+            <div class="qr-box">
+                <!-- YAHAN APNA ASLI QR CODE IMAGE LAGAYEIN -->
+                <img src="your-qr-code.jpg" alt="Arka-Medha QR Code" class="qr-image" onerror="this.src='https://via.placeholder.com/220?text=Scan+QR+Code'">
+                <p style="font-weight: bold; color: #0f2027; margin-top: 10px;">Scan using PhonePe, GPay, or Paytm</p>
+            </div>
+            
+            <div style="margin-top: 20px;">
+                <p style="color: #666; font-size: 15px;">Or pay directly using UPI ID:</p>
+                <div class="upi-id">arkamedha@upi</div> <!-- YAHAN APNI UPI ID DALEN -->
+            </div>
+        </div>
+
+        <!-- Right: Payment Verification Form -->
+        <div class="payment-form">
+            <h2>Payment Verification</h2>
+            <p class="sub-text">Please fill this form after making the payment to update your fee record.</p>
+            
+            <form action="success.html" method="GET">
+                <div class="input-group">
+                    <label>Student's Full Name *</label>
+                    <input type="text" placeholder="Enter student's name" required>
+                </div>
+                
+                <div class="input-group">
+                    <label>Mobile Number (WhatsApp) *</label>
+                    <input type="tel" placeholder="+91" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Select Course / Batch *</label>
+                    <select required>
+                        <option value="">-- Select Course --</option>
+                        <option value="9th">9th Foundation</option>
+                        <option value="10th">10th Board & Foundation</option>
+                        <option value="11th">11th CBSE/State (PCM)</option>
+                        <option value="12th">12th Board (PCM)</option>
+                        <option value="jee">JEE Main & Advanced</option>
+                        <option value="neet">NEET Preparation</option>
+                        <option value="nda">NDA Entrance</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label>Amount Paid (₹) *</label>
+                    <input type="number" placeholder="Enter amount" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Transaction ID / UTR Number *</label>
+                    <input type="text" placeholder="e.g. 123456789012" required>
+                </div>
+
+                <button type="submit" class="submit-btn">Submit Payment Details</button>
+                
+                <div class="secure-badge">
+                    🔒 100% Secure & Verified Payment
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Arka-Medha Education. Makronia, Sagar (M.P.)</p>
+        <p style="margin-top: 5px; font-size: 14px; color: #888;">Helpline: +91 9165550105</p>
+    </footer>
+
+</body>
+</html>
