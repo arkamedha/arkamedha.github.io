@@ -32,14 +32,43 @@
          text-transform: uppercase;
          text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
         }
-        .navbar ul { display: flex; list-style: none; }
-        .navbar ul li { margin-left: 25px; }
+        .navbar ul { display: flex; list-style: none; align-items: center; }
+        .navbar ul li { margin-left: 25px; position: relative; }
         .navbar ul li a { color: #dfdfdf; text-decoration: none; font-size: 16px; font-weight: 500; }
         .navbar ul li a:hover { color: #f8b500; }
 
+        /* NAYA: Dropdown Menu CSS */
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #ffffff;
+            min-width: 170px;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+            border-radius: 5px;
+            z-index: 1000;
+            top: 100%;
+            left: 0;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+        .dropdown-content a {
+            color: #333 !important;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 15px !important;
+            border-bottom: 1px solid #eee;
+        }
+        .dropdown-content a:hover {
+            background-color: #f4f7f6;
+            color: #0056b3 !important;
+        }
+        /* Hover karne par dropdown dikhega */
+        .dropdown:hover .dropdown-content { display: block; }
+
         /* Hero Banner */
         .hero { background: linear-gradient(rgba(15, 32, 39, 0.88), rgba(15, 32, 39, 0.88)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80') no-repeat center center/cover; height: 60vh; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center; padding: 20px; }
-        /* Ye nayi line add karein: Hero logo ki size ke liye */
         .hero-logo { height: 160px; width: auto; margin-bottom: -15px; filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.5)); }
         .hero h1 { font-size: 46px; margin-top: -15px; margin-bottom: 5px; color: #f8b500; }
         .hero .tagline { font-size: 16px; font-style: italic; color: #dfdfdf; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 25px; border-bottom: 1px solid #f8b500; padding-bottom: 8px; }
@@ -61,22 +90,17 @@
 
         /* Footer */
         footer { background: #0b171c; color: #dfdfdf; text-align: center; padding: 20px; margin-top: auto; }
+        
         @media screen and (max-width: 768px) {
-            /* Menu / Navbar ko theek karna */
             .navbar { flex-direction: column; text-align: center; padding: 15px 10px; gap: 15px; }
             .navbar ul { flex-wrap: wrap; justify-content: center; gap: 10px; }
-            .navbar ul li { margin: 0; }
-            
-            /* Main Heading aur Banner ko fit karna */
+            .navbar ul li { margin: 5px 10px; }
+            .dropdown-content { position: relative; width: 100%; text-align: center; }
             .hero-section { padding: 40px 15px; }
             .hero-section h1 { font-size: 32px; }
             .hero-section p { font-size: 16px; }
-            
-            /* Study Material boxes ko mobile par upar-neeche karna */
             #study-material div { flex-direction: column; align-items: center; }
             #study-material div > div { width: 100% !important; max-width: 320px; margin-bottom: 20px; }
-            
-            /* Agar koi badi image (Hero image) hai toh usko fit karna */
             img { max-width: 100%; height: auto; }
         }
     </style>
@@ -99,17 +123,25 @@
             <li><a href="photos.html">Photos</a></li>
             <li><a href="payment.html" style="color: #e74c3c; font-weight: 900;">Pay Fees</a></li>
             <li><a href="contact.html">Contact & Map</a></li>
+            
+            <!-- NAYA: Dropdown Menu Button -->
+            <li class="dropdown">
+                <a href="#" style="background-color: #f8b500; color: #0f2027; padding: 8px 15px; border-radius: 5px; font-weight: bold;">📝 Tests Login ▾</a>
+                <div class="dropdown-content">
+                    <a href="#live-test-section">👨‍🎓 Student Login</a>
+                    <a href="dashboard.html" target="_blank">👨‍🏫 Teacher Login</a>
+                </div>
+            </li>
+
         </ul>
     </nav>
 
     <!-- Hero Banner -->
     <header class="hero">
-        <!-- Ye nayi line add karni hai -->
         <img src="logo.png" alt="Arka-Medha Hero Logo" class="hero-logo" onerror="this.style.display='none';">
         <h1>Arka-Medha Education</h1>
         <div class="tagline">Igniting Minds, Illuminating Futures</div>
         <p>Master Physics, Chemistry, and Mathematics with top faculties. Step-by-step foundation preparation designed to crack your dream exams.</p>
-        <!-- Hero Button bhi contact.html par point karega -->
         <a href="contact.html" class="btn">Book Free Demo Class</a>
     </header>
 
@@ -145,6 +177,22 @@
                 <h3>NDA Entrance Exam</h3>
                 <p>Specialized batch for Defence aspirants. Focus on Mathematics and General Ability tests with structured timelines and paper analysis.</p>
             </div>
+        </div>
+    </section>
+
+    <!-- Live Test Integration (Iframe) -->
+    <section id="live-test-section" style="padding: 60px 20px; background-color: #e9ecef; text-align: center;">
+        <h2 style="font-size: 34px; margin-bottom: 10px; color: #0f2027;">Online Live Tests 📝</h2>
+        <p style="margin-bottom: 30px; color: #555; font-size: 18px;">Enter your details below to start your exam directly from our website.</p>
+        
+        <div style="max-width: 700px; margin: auto; border: 4px solid #0056b3; border-radius: 12px; overflow: hidden; box-shadow: 0px 10px 25px rgba(0,0,0,0.15); background: white;">
+            <iframe 
+                src="student.html" 
+                width="100%" 
+                height="750px" 
+                style="border: none;" 
+                allowfullscreen>
+            </iframe>
         </div>
     </section>
 
